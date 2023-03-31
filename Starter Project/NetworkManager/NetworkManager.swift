@@ -9,9 +9,9 @@ import Foundation
 
 class NetworkManager {
     
-   static var shared = NetworkManager()
+    static var shared = NetworkManager()
     
-   private init() { }
+    private init() { }
     
     func fetchImages(page: String) async throws -> [ImageURLResponse] {
         
