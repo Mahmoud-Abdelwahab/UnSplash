@@ -13,7 +13,7 @@ class NetworkManager {
     
    private init() { }
     
-    func fetchImages(query: String, page: String) async throws -> [ImageURLResponse] {
+    func fetchImages(page: String) async throws -> [ImageURLResponse] {
         
         guard let request = Helpers.buildURLRequest(pageNumber: page) else {
             throw NetworkError.invalidUrl
