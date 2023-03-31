@@ -8,7 +8,7 @@
 import UIKit
 
 class UnSplashImagesViewController: UIViewController {
-  
+    
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,7 +17,7 @@ class UnSplashImagesViewController: UIViewController {
     private var photosScreenData = [ImageURLResponse]()
     private var currentPage = 0
     private var isPrefetchingEnabled = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -27,6 +27,7 @@ class UnSplashImagesViewController: UIViewController {
 // MARK: - Configurations
 
 extension UnSplashImagesViewController {
+    
     func configureViewController() {
         fetchLatestUnSplashImages()
         tableView.dataSource = self
@@ -50,14 +51,13 @@ extension UnSplashImagesViewController: UITableViewDataSource, UITableViewDelega
             cell.configure(with: url)
             return cell
         }
-      
+        
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? UnSplashImageTableViewCell {
             let imageViewController = ImagePreviewViewController()
-//            imageViewController.modalPresentationStyle = .fullScreen
             imageViewController.image = cell.splashImageView.image
             present(imageViewController, animated: true, completion: nil)
         }
@@ -89,7 +89,7 @@ private extension UnSplashImagesViewController {
         }
     }
     
-  
+    
     func reloadTableView(photos: [ImageURLResponse]) {
         DispatchQueue.main.async { [weak self] in
             self?.isPrefetchingEnabled = false

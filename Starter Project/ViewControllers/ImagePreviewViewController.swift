@@ -10,9 +10,9 @@ import UIKit
 class ImagePreviewViewController: UIViewController {
     
     // MARK: Properties
-
-   private let imageView = UIImageView()
-   var image: UIImage?
+    
+    private let imageView = UIImageView()
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,8 @@ class ImagePreviewViewController: UIViewController {
 // MARK: - Configurations
 
 private extension ImagePreviewViewController {
+    
     func configureViewController() {
-        view.backgroundColor = .gray
         setupImageViewConstrains()
     }
     
