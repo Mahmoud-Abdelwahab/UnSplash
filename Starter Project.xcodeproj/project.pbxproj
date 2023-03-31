@@ -19,6 +19,7 @@
 		29ADB03329D6D4BE00AAFB7E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ADB03229D6D4BE00AAFB7E /* Helpers.swift */; };
 		29ADB03629D6E37700AAFB7E /* UnSplashImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ADB03529D6E37700AAFB7E /* UnSplashImageTableViewCell.swift */; };
 		29ADB03A29D6F5AB00AAFB7E /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ADB03929D6F5AB00AAFB7E /* UIImage+Extension.swift */; };
+		29ADB03C29D7032B00AAFB7E /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ADB03B29D7032B00AAFB7E /* ImagePreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		29ADB03229D6D4BE00AAFB7E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		29ADB03529D6E37700AAFB7E /* UnSplashImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnSplashImageTableViewCell.swift; sourceTree = "<group>"; };
 		29ADB03929D6F5AB00AAFB7E /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		29ADB03B29D7032B00AAFB7E /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				02948DF129CFC76D00F82F28 /* UnSplashImagesViewController.swift */,
 				29ADB03529D6E37700AAFB7E /* UnSplashImageTableViewCell.swift */,
+				29ADB03B29D7032B00AAFB7E /* ImagePreviewViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				29ADB03329D6D4BE00AAFB7E /* Helpers.swift in Sources */,
 				29ADB02B29D6436A00AAFB7E /* NetworkManager.swift in Sources */,
 				29ADB03A29D6F5AB00AAFB7E /* UIImage+Extension.swift in Sources */,
+				29ADB03C29D7032B00AAFB7E /* ImagePreviewViewController.swift in Sources */,
 				02948DF229CFC76D00F82F28 /* UnSplashImagesViewController.swift in Sources */,
 				02948DEE29CFC76D00F82F28 /* AppDelegate.swift in Sources */,
 				29ADB03129D646C600AAFB7E /* ImageURLResponse.swift in Sources */,

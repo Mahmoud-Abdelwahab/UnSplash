@@ -20,11 +20,18 @@ class UnSplashImageTableViewCell: UITableViewCell {
     }
     
     func configure(with imageURL: URL) {
+        let activityInd = UIActivityIndicatorView()
+        activityInd.center = CGPoint(x: splashImageView.frame.size.width  / 2,
+                                     y: splashImageView.frame.size.height / 2)
+        activityInd.color = UIColor.black
+        splashImageView.addSubview(activityInd)
+        activityInd.startAnimating()
         DispatchQueue.global().async {
             let image =  UIImage(url: imageURL)
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
                 self.splashImageView.image = image
+                activityInd.stopAnimating()
             }
         }
     }
@@ -43,5 +50,10 @@ class UnSplashImageTableViewCell: UITableViewCell {
             splashImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             splashImageView.heightAnchor.constraint(equalToConstant: 180)
         ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        splashImageView.image = nil
     }
 }

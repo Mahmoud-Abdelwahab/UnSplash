@@ -14,7 +14,7 @@ class UnSplashImagesViewController: UIViewController {
     
     // MARK: Properties
     
-    private var photosScreenData: [ImageURLResponse]?
+    private var photosScreenData = [ImageURLResponse]()
     private var currentPage = 0
     private var isPrefetchingEnabled = false
 
@@ -30,6 +30,7 @@ extension UnSplashImagesViewController {
     func configureViewController() {
         fetchLatestUnSplashImages()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.prefetchDataSource = self
         tableView.register(UnSplashImageTableViewCell.self, forCellReuseIdentifier: "UnSplachCell")
     }
@@ -37,15 +38,15 @@ extension UnSplashImagesViewController {
 
 // MARK: - Tabelview datasource & Prefetch datasource
 
-extension UnSplashImagesViewController: UITableViewDataSource, UITableViewDataSourcePrefetching {
+extension UnSplashImagesViewController: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        photosScreenData?.count ?? .zero
+        photosScreenData.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UnSplachCell", for: indexPath) as! UnSplashImageTableViewCell
-        if let thumb = photosScreenData?[indexPath.row].urls?.thumb , let url = URL(string: thumb) {
+        if let fullImageURL = photosScreenData[indexPath.row].urls?.small_s3 , let url = URL(string: fullImageURL) {
             cell.configure(with: url)
             return cell
         }
@@ -53,9 +54,18 @@ extension UnSplashImagesViewController: UITableViewDataSource, UITableViewDataSo
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? UnSplashImageTableViewCell {
+            let imageViewController = ImagePreviewViewController()
+//            imageViewController.modalPresentationStyle = .fullScreen
+            imageViewController.image = cell.splashImageView.image
+            present(imageViewController, animated: true, completion: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= (photosScreenData?.count ?? .zero) - 4 && !isPrefetchingEnabled {
+            if index.row >= (photosScreenData.count) - 4 && !isPrefetchingEnabled {
                 fetchLatestUnSplashImages()
                 break
             }
@@ -83,7 +93,7 @@ private extension UnSplashImagesViewController {
     func reloadTableView(photos: [ImageURLResponse]) {
         DispatchQueue.main.async { [weak self] in
             self?.isPrefetchingEnabled = false
-            self?.photosScreenData?.append(contentsOf: photos)
+            self?.photosScreenData.append(contentsOf: photos)
             self?.currentPage += 1
             self?.tableView.reloadData()
         }

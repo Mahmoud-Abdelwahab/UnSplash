@@ -14,5 +14,5 @@ struct ImageURLResponse: Decodable {
 
 // MARK: - Urls
 struct Urls: Decodable {
-    let full, thumb: String?
+    let small_s3: String?
 }
