@@ -5,7 +5,7 @@
 //  Created by Mahmoud Abdulwahab on 31/03/2023.
 //
 
-import Foundation
+import UIKit
 
 enum Helpers {
     
@@ -25,5 +25,11 @@ enum Helpers {
         guard let url = components?.url else { return nil }
         let request = URLRequest(url: url)
         return request
+    }
+    
+    static func loadFrom(url: String) async throws -> UIImage? {
+        guard let url = URL(string: url) else { return nil }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return UIImage(data: data)
     }
 }
